@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les vide-apparts{% endblock %}
+
+{% block body %}
+    {% for appart in appartments %}
+        <div>
+            <img class="align-self-start mr-3" src="{{appart.picture}}">
+            <p>Chez {{ appart.user.firstname }}</p>
+        </div>
+    {% endfor %} 
+
+{% endblock %}

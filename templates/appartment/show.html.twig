@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le vide-appart de {{ appart.user.firstname }} à {{ appart.city }}{% endblock %}
+
+{% block body %}
+
+<div class="media">
+  <img class="align-self-start mr-3" src="{{appart.picture}}">
+  <div class="media-body">
+    <h1 class="mt-0">Bienvenue chez {{ appart.user.firstname }}</h1>
+  </div>
+</div>
+<div class="media">
+  <div class="media-body">
+    {% for product in products %}
+      <div>
+        <h3>
+        <a href="{{ path("appartment_product_show", { appartmentId: appartment.id, productId: product.id }) }}">
+				{{ product.type }}
+        </a>
+        </h3>
+        <p>{{ product.currentPrice }}</p>
+        <p>{{ product.formerPrice }}</p>
+        <p>{{ product.brand }}</p>
+      </div>
+    {% else %}
+      {{ appart.user.name }} n'a rien à vendre pour le moment.
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
