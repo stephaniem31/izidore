@@ -24,13 +24,8 @@ class AppartmentController extends AbstractController
             ->getRepository(Appartment::class)
             ->findAll();
 
-        $users = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->findAll();
-
         return $this->render('appartment/index.html.twig', [
             'appartments' => $appartments,
-            'users' => $users,
         ]);
     }
 
