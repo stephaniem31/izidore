@@ -17,19 +17,20 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 9; $i++) {
 
             $product = new Product();
+            $types = [rand(0, count($this->types) - 1)];
 
             $product->setAppartment($this->getReference('appartment_1'));
-            $product->setType($this->types[rand(0, 7)]);
-            $product->setBrand($this->brands[rand(0, 4)]);
+            $product->setType($this->types[$types]);
+            $product->setBrand($this->brands[rand(0, count($this->brands) - 1)]);
             $product->setCurrentPrice(rand(10, 1000));
             $product->setFormerPrice(rand(50, 1500));
             $product->setCurrentCondition('défauts mineurs non-visibles');
             $product->setAge($this->age[rand(0, 2)]);
             $product->setDescription('Vide-appartement témoin : rien n\'est à vendre !');
-            $product->setPicture('https://izidore-production-bucket.s3.eu-west-3.amazonaws.com/media/cache/stuff_picture_XL/ea99a0b096c451486ffd3df31ef7d9b8.jpeg');
+            $product->setPicture('\assets\images\type-' . $types . '.jpeg');
 
             $manager->persist($product);
         }

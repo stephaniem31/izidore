@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel='icon' href="{{ asset('assets/images/favicon.ico') }}"/>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
@@ -10,10 +11,12 @@
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            <script src="https://kit.fontawesome.com/9e28070b5a.js" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="container-fluid">
+            {% include '/components/_navbar.html.twig' %}
+        {% block body %}
+        {% endblock %}
     </body>
 </html>

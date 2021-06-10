@@ -1,25 +1,104 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Le vide-appart de {{ appart.user.firstname }} à {{ appart.city }}{% endblock %}
+{% block title %}Le vide-appart de {{ appart.user.firstname }} à {{ appart.city }} | izidore {% endblock %}
 
 {% block body %}
-
-<div class="media">
-  <img class="align-self-start mr-3" src="{{appart.picture}}">
+<div style="height:56px;">
+</div>
+<div class="media" style="background-image: url('{{asset(appart.picture)}}'); height: 50vh; top:500px; background-position:bottom; background-repeat:no-repeat;">
   <div class="media-body">
     <h1 class="mt-0">Bienvenue chez {{ appart.user.firstname }}</h1>
   </div>
 </div>
-<div class="media">
-  <div class="media-body">
-      <div class="row justify-content-evenly">
-    {% for product in products %}
-        {% include 'components/_card_product.html.twig' %}
-    {% else %}
-      {{ appart.user.name }} n'a rien à vendre pour le moment.
-    {% endfor %}
-      </div>
-  </div>
+<div class="d-flex flex-row-reverse col-12">
+	<div class="home-presentation order-lg-1 flex-shrink-0 col-4">
+    	<div class="announce-home-presentation bg-grey">
+			<div class="d-flex align-items-center justify-content-center py-2 px-1 bg-green announce-presentation-address ">
+	      	<img class="height-small mr-2 " src="/img/icons/map-pin.svg" alt="marqueur de carte"/>
+        		<div class="d-flex align-items-center justify-content-center">
+		      		<p class="text-semi-bold location" data-has-floor="0">Junhac, 15120</p>
+			  	</div>
+      		</div>  
+	    	<div class="announce-info-side">
+        		<div class="d-flex flex-row align-items-center user-infos">
+          			<div class="card-user-picture-announce">
+            			<img class="profile-picture" src="https://izidore-production-bucket.s3.eu-west-3.amazonaws.com/media/cache/profile_picture/402bf820e579b75dacb379f4303f5ab0.png" alt="photo de profil">
+          			</div>
+          			<div class="flex-fill card-infos pl-2">
+            			<div class="info-container">
+              				<div class="seller-name text-green text-semi-bold text-bigger">Emma
+              				</div>
+            			</div>
+          			</div>
+        		</div>
+				<div>
+		      		<p class="text-semi-bold">Meubles descendus</p>
+		        		<div class="d-flex align-items-center mb-3 mt-1">
+			        		<i class="fa fa-arrow-down text-bigger width-small text-center text-green flex-shrink-0"></i>
+			          		<p class="text-small pl-2">Emma s'engage à descendre ses meubles au rez-de-chaussée&nbsp;!</p>
+		        		</div>
+				</div>
+	      		<div>
+		      		<p class="text-semi-bold">Préférences de retrait</p>
+		        		<div class="d-flex align-items-center mb-3 mt-1">
+			        		<i class="fa fa-calendar text-bigger width-small text-center text-green flex-shrink-0"></i>
+			          			<div class="pl-2">
+								  	<div class="d-flex justify-content-start align-items-center flex-wrap">
+							      		<p class="text-small mr-1">Semaine&nbsp;:</p>
+							      		<p class="text-small text-semi-bold">de 08h à 20h</p>
+						      		</div>
+									<div class="d-flex justify-content-start align-items-center flex-wrap">
+							      		<p class="text-small mr-1">Week-end&nbsp;:</p>
+							      		<p class="text-small text-semi-bold">de 08h à 20h</p>
+						      		</div>
+								</div>
+						</div>
+        		</div>
+
+	      		<div class="announce-description-card px-2 px-md-0 py-2 mb-3" id="accordion">
+		      		<a id="description-title" class="collapsed d-flex align-items-center justify-content-between pointer" data-toggle="collapse" data-target="#description" aria-expanded="true" aria-controls="description">
+			      		<p class="text-semi-bold">Description</p>
+						<i class="fa fa-chevron-up ml-2" aria-hidden="true"></i>
+		      		</a>
+		      			<div id="description" class="collapse pt-1 text-semi-small" aria-labelledby="description-title" data-parent="#accordion">
+			      			⚠️ Vide-appartement témoin : rien n&#039;est à vendre !
+		      			</div>
+	      		</div>
+
+	      		<div class="contact-seller-container">
+					<div class="tabbar">
+          				<a href="/vide-appart/18650/prise-de-contact" class="btn btn-medium btn-green btn-square btn-full-width">
+			      			ENTRER EN CONTACT
+	          			</a>
+		      		</div>
+	
+          			<div class="ajax-data-container auto-init"data-url="/vide-appart/18650/seller-response-delay" style="display:none">
+      				<p class="mt-1 text-center text-small">
+					    <span class="text-bold">Temps de réponse&nbsp;:</span>
+					    <span class="ajax-data-content"></span>
+				    </p>
+          			</div>
+	      		</div>
+			</div>
+
+			<div class="announce-map-side">
+				<div class="embeded-map" data-lat="44.7130784" data-lon="2.4532195" data-mode="view">
+        		</div>
+			</div>
+	  	</div>
+	</div>
+  	<div class="media col-8">
+    	<div class="media-body">
+      		<div class="row justify-content-evenly">
+        		{% for product in products %}
+          			{% include 'components/_card_product.html.twig' %}
+        		{% else %}
+          			{{ appart.user.name }} n'a rien à vendre pour le moment.
+				{% endfor %}
+      		</div>
+    	</div>
+	</div>
 </div>
+
 
 {% endblock %}

@@ -63,6 +63,11 @@ class Product
      */
     private $appartment;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Review::class, mappedBy="product", cascade={"persist", "remove"})
+     */
+    private $review;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -172,6 +177,23 @@ class Product
     public function setAppartment(?appartment $appartment): self
     {
         $this->appartment = $appartment;
+
+        return $this;
+    }
+
+    public function getReview(): ?Review
+    {
+        return $this->review;
+    }
+
+    public function setReview(Review $review): self
+    {
+        // set the owning side of the relation if necessary
+        if ($review->getProduct() !== $this) {
+            $review->setProduct($this);
+        }
+
+        $this->review = $review;
 
         return $this;
     }

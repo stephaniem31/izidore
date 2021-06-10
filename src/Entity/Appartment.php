@@ -60,9 +60,15 @@ class Appartment
      */
     private $products;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="appartment")
+     */
+    private $review;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->review = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -178,6 +184,36 @@ class Appartment
             // set the owning side to null (unless already changed)
             if ($product->getAppartment() === $this) {
                 $product->setAppartment(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Review[]
+     */
+    public function getReview(): Collection
+    {
+        return $this->review;
+    }
+
+    public function addReview(Review $review): self
+    {
+        if (!$this->review->contains($review)) {
+            $this->review[] = $review;
+            $review->setAppartment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): self
+    {
+        if ($this->review->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getAppartment() === $this) {
+                $review->setAppartment(null);
             }
         }
 
