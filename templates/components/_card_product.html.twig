@@ -1,33 +1,35 @@
 <div class="card my-3">
-	<img src="{{product.picture}}" class="card-img-top" style="background: #999; height: 15rem; object-fit: contain">
+	<img src="{{product.picture}}" class="card-img-top">
 
-	<h3 class="card-title bg-dark text-white text-center py-3 fs-6 font2">
+	<h3 class="card-title bg-dark text-white text-center py-3 text-s font2">
 		{{ product.type }}
 	</h3>
 
   	<div class="card-body">
 	  	<div class="row">
 			<div class="col-12 col-lg-8">
-				<span class="card-text text-dark fs-4">
+				<span class="card-text text-dark fs-4 fw-bold">
 					{{ product.currentPrice }} €
 				</span>
 
-				<span class="text-warning fs-6 text-decoration-line-through">
+				<span class="text-warning text-s text-decoration-line-through fw-bold">
 					{{ product.formerPrice }} €
 				</span>
 
-				<p class="text-warning fs-6">
+				<p class="text-warning text-s fw-bold">
 					{{product.brand}}
 				</p>
 			</div>
 
 			<div class="col-12 col-lg-4 text-end">
 				{% if product.isSold == false %}
-					<a class="btn btn-secondary" href="{{ path("appartment_buy",{ appartment: appart.id, product: product.id }) }}">
-						ACHETER
+					<a class="btn btn-secondary fw-bold text-uppercase" href="{{ path("appartment_buy",{ appartment: appart.id, product: product.id }) }}">
+						acheter
 					</a>
 				{% else %}
-					<button type="button" class="btn btn-danger" disabled>VENDU</button>
+					<button type="button" class="btn btn-danger fw-bold text-uppercase" disabled>
+					vendu
+					</button>
 				{% endif %}
 			</div>
 		</div>

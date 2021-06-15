@@ -14,6 +14,35 @@
         font-family:'Roboto Slab', serif;
     }
 
+    .card-img {
+        height: 15rem; 
+        object-fit : cover;
+    }
+
+    .card-img-top {
+        background: #999; 
+        height: 15rem; 
+        object-fit: contain;
+    }
+
+    .vide-appt {
+        background-color: #666;
+        height: 50vh; 
+        background-position:bottom; 
+        background-repeat:no-repeat; 
+    }
+
+    .footer-bottom {
+        line-height:.5rem
+    }
+
+    .text-s {
+        font-size:small;
+    }
+
+
+
+
     
 
     @import "~bootstrap/scss/bootstrap";

@@ -5,7 +5,9 @@
 				<i class="fas fa-map-marker-alt fa-2x mx-2"></i>
 			</div>
 			<div>
-				<p class="text-semi-bold location" data-has-floor="0">{{ appart.city }}, {{ appart.zipcode }}</p>
+				<p class="location fw-bold" data-has-floor="0">
+				{{ appart.city }}, {{ appart.zipcode }}
+				</p>
 			</div>
 		</div>  
 		<div class="announce-info-side">
@@ -15,7 +17,8 @@
 				</div>
 				<div class="flex-fill card-infos pl-2">
 					<div class="info-container">
-						<div class="seller-name text-primary fs-3 ms-3">{{ appart.user.firstname }}
+						<div class="seller-name text-primary fs-3 ms-3 fw-bold">
+						{{ appart.user.firstname }}
 						</div>
 					</div>
 				</div>
@@ -38,31 +41,31 @@
 			</div>
 			<div>
 				{% if appart.objectDown == true %}
-				<p class="text-semi-bold">Meubles descendus</p>
+				<p class="fw-bold">Meubles descendus</p>
 					<div class="d-flex align-items-center mb-3 mt-1">
-						<i class="fa fa-arrow-down fa-2x me-3" style="color:#58b58d;"></i>
-						<p class="text-small pl-2 font2"style="font-size:.75rem;">
+						<i class="fa fa-arrow-down fa-2x me-3 text-primary"></i>
+						<p class="pl-2 font2 text-s"style="font-size:.75rem;">
 						Emma s'engage à descendre ses meubles au rez-de-chaussée !
 						</p>
 					</div>
 				{% endif %}
 			</div>
 			<div>
-				<p class="text-semi-bold">Préférences de retrait</p>
+				<p class="fw-bold">Préférences de retrait</p>
 					<div class="d-flex align-items-center mb-3 mt-1">
-						<i class="fa fa-calendar fa-2x me-3" style="color:#58b58d;"></i>
+						<i class="fa fa-calendar fa-2x me-3 text-primary"></i>
 							<div class="pl-2">
 								<div class="d-flex justify-content-start align-items-center flex-wrap">
-									<p class="text-small mr-1 font2" style="font-size:.75rem;">
+									<p class="mr-1 font2 text-s">
 									Semaine : 
 									</p>
-									<p class="text-small text-semi-bold" style="font-size:.75rem;">
+									<p class="fw-bold text-s">
 									de 08h à 20h
 									</p>
 								</div>
 								<div class="d-flex justify-content-start align-items-center flex-wrap">
-									<p class="text-small mr-1 font2" style="font-size:.75rem;">Week-end : </p>
-									<p class="text-small text-semi-bold" style="font-size:.75rem;"> de 08h à 20h</p>
+									<p class="text-s mr-1 font2">Week-end : </p>
+									<p class="fw-bold text-s"> de 08h à 20h</p>
 								</div>
 							</div>
 					</div>
@@ -76,7 +79,7 @@
 					</h2>
 					<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
 						<div class="accordion-body">
-							<p class="font2" style="font-size:.85rem;">
+							<p class="font2 fs-5">
 							⚠️{{ appart.description }}
 							</p>
 						</div>
