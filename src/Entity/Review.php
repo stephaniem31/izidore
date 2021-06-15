@@ -2,14 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ReviewRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ReviewRepository::class)
  */
 class Review
 {
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -34,12 +39,6 @@ class Review
     private $product;
 
     /**
-     * @ORM\OneToOne(targetEntity=Buyer::class, inversedBy="review")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $buyer;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Appartment::class, inversedBy="comment")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -49,6 +48,11 @@ class Review
      * @ORM\Column(type="integer")
      */
     private $rate;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
 
     public function getId(): ?int
     {
@@ -91,18 +95,6 @@ class Review
         return $this;
     }
 
-    public function getBuyer(): ?buyer
-    {
-        return $this->buyer;
-    }
-
-    public function setBuyer(buyer $buyer): self
-    {
-        $this->buyer = $buyer;
-
-        return $this;
-    }
-
     public function getAppartment(): ?Appartment
     {
         return $this->appartment;
@@ -123,6 +115,18 @@ class Review
     public function setRate(int $rate): self
     {
         $this->rate = $rate;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

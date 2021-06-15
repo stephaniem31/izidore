@@ -12,7 +12,6 @@ class AppartmentFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $appartment = new Appartment();
-
         $appartment->setUser($this->getReference('user_1'));
         $appartment->setAddress('10 rue du Chat Malin');
         $appartment->setZipcode('15120');

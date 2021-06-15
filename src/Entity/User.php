@@ -39,9 +39,20 @@ class User
      */
     private $appartments;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $profilePicture;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
+     */
+    private $reviews;
+
     public function __construct()
     {
         $this->appartments = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -111,6 +122,23 @@ class User
                 $appartment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getFirstname() . ' ' . $this->getLastname();
+    }
+
+    public function getProfilePicture(): ?string
+    {
+        return $this->profilePicture;
+    }
+
+    public function setProfilePicture(string $profilePicture): self
+    {
+        $this->profilePicture = $profilePicture;
 
         return $this;
     }

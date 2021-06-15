@@ -1,0 +1,96 @@
+<div class="home-presentation order-1 shadow p-3 mb-5 bg-body rounded bg-warning">
+	<div class="announce-home-presentation">
+		<div class="d-flex mx-3 justify-content-center">
+			<div>
+				<i class="fas fa-map-marker-alt fa-2x mx-2"></i>
+			</div>
+			<div>
+				<p class="text-semi-bold location" data-has-floor="0">{{ appart.city }}, {{ appart.zipcode }}</p>
+			</div>
+		</div>  
+		<div class="announce-info-side">
+			<div class="d-flex flex-row align-items-center user-infos">
+				<div class="card-user-picture-announce">
+					<img class="profile-picture"  src="{{appart.user.profilePicture}}" alt="photo de profil">
+				</div>
+				<div class="flex-fill card-infos pl-2">
+					<div class="info-container">
+						<div class="seller-name text-primary fs-3 ms-3">{{ appart.user.firstname }}
+						</div>
+					</div>
+				</div>
+				<div style="font-size:.85rem;">
+					{% if nbReviews > 0 %}
+						{% if nbReviews == 1 %}
+							<a href="{{ path("review_show", { id: appart.id }) }}">Voir l'avis</a>
+							<p>({{ rateAverage|number_format(1) }} ⭐)</p>
+						{% else %}
+						<a href="{{ path("review_show", { id: appart.id }) }}">Voir les {{ nbReviews }} avis</a>
+						<p>({{ rateAverage|number_format(1) }} ⭐)</p>
+						{% endif %} 
+					
+					{% endif %}
+				</div>
+			</div>
+			<div>
+				{% if appart.objectDown == true %}
+				<p class="text-semi-bold">Meubles descendus</p>
+					<div class="d-flex align-items-center mb-3 mt-1">
+						<i class="fa fa-arrow-down fa-2x me-3" style="color:#58b58d;"></i>
+						<p class="text-small pl-2 font2"style="font-size:.75rem;">
+						Emma s'engage à descendre ses meubles au rez-de-chaussée !
+						</p>
+					</div>
+				{% endif %}
+			</div>
+			<div>
+				<p class="text-semi-bold">Préférences de retrait</p>
+					<div class="d-flex align-items-center mb-3 mt-1">
+						<i class="fa fa-calendar fa-2x me-3" style="color:#58b58d;"></i>
+							<div class="pl-2">
+								<div class="d-flex justify-content-start align-items-center flex-wrap">
+									<p class="text-small mr-1 font2" style="font-size:.75rem;">
+									Semaine : 
+									</p>
+									<p class="text-small text-semi-bold" style="font-size:.75rem;">
+									de 08h à 20h
+									</p>
+								</div>
+								<div class="d-flex justify-content-start align-items-center flex-wrap">
+									<p class="text-small mr-1 font2" style="font-size:.75rem;">Week-end : </p>
+									<p class="text-small text-semi-bold" style="font-size:.75rem;"> de 08h à 20h</p>
+								</div>
+							</div>
+					</div>
+			</div>
+			<div class="accordion" id="accordionExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="headingFour">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						Description
+						</button>
+					</h2>
+					<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							<p class="font2" style="font-size:.85rem;">
+							⚠️{{ appart.description }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="contact-seller-container">
+		<div class="d-grid">
+			<button type="button" class="btn btn-primary mt-4 text-white" style="font-family:'Poppins', sans-serif;">ENTRER EN CONTACT</button>
+		</div>
+	</div>
+
+	<div class="announce-map-side mt-4">
+		<div class="embeded-map d-flex justify-content-around" data-mode="view">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.3825298359166!2d1.4435736151905305!3d43.64020906128919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aea3f76fd6fce1%3A0x861987bbcd6d1a56!2sizidore!5e0!3m2!1sfr!2sfr!4v1623538406094!5m2!1sfr!2sfr" width="" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</div>
+	</div>
+</div>

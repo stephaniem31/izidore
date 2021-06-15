@@ -68,6 +68,11 @@ class Product
      */
     private $review;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $isSold;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -194,6 +199,18 @@ class Product
         }
 
         $this->review = $review;
+
+        return $this;
+    }
+
+    public function getIsSold(): ?bool
+    {
+        return $this->isSold;
+    }
+
+    public function setIsSold(bool $isSold): self
+    {
+        $this->isSold = $isSold;
 
         return $this;
     }

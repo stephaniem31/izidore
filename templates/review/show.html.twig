@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les avis de {{appartment.user.firstname}}{% endblock %}
+
+{% block body %}
+   
+    <div class="my-5">
+        <h2 class="text-center mb-4 fs-1">Les avis de {{appartment.user.firstname}}</h2>
+    </div>
+   {% for review in reviews %}
+    <div class="my-3 pt-2">
+        <div class="border border-primary rounded col-5 ps-2">
+            <p class="pt-3 fs-5">L'avis de {{review.name}}, le {{review.date|date('d-m-Y')}} :</p>
+            <p class="font2">{{review.description}}</p>
+            <p>{{review.rate}} ⭐</p>
+        </div>
+   </div>
+   {% endfor %}
+
+    <div class="mt-5 mb-2">
+        <a href="{{ path("appartment_show", { id: appartment.id }) }}">
+            Retourner sur le vide-appart de {{appartment.user.firstname}}
+        </a>
+    </div>
+{% endblock %}

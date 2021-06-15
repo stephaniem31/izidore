@@ -1,10 +1,36 @@
-<div class="card my-3" style="width: 18rem;">
-	<img src="{{product.picture}}" class="card-img-top" style="height: 15rem;">
+<div class="card my-3">
+	<img src="{{product.picture}}" class="card-img-top" style="background: #999; height: 15rem; object-fit: contain">
+
+	<h3 class="card-title bg-dark text-white text-center py-3 fs-6 font2">
+		{{ product.type }}
+	</h3>
+
   	<div class="card-body">
-		<div class="d-flex">
-			<h3 class="card-title">{{ product.type }}</h3>
-			<button type="button" class="btn btn-warning ms-auto"><a href="\review\index.html.twig">Acheter</a></button>
+	  	<div class="row">
+			<div class="col-12 col-lg-8">
+				<span class="card-text text-dark fs-4">
+					{{ product.currentPrice }} €
+				</span>
+
+				<span class="text-warning fs-6 text-decoration-line-through">
+					{{ product.formerPrice }} €
+				</span>
+
+				<p class="text-warning fs-6">
+					{{product.brand}}
+				</p>
+			</div>
+
+			<div class="col-12 col-lg-4 text-end">
+				{% if product.isSold == false %}
+					<a class="btn btn-secondary" href="{{ path("appartment_buy",{ appartment: appart.id, product: product.id }) }}">
+						ACHETER
+					</a>
+				{% else %}
+					<button type="button" class="btn btn-danger" disabled>VENDU</button>
+				{% endif %}
+			</div>
 		</div>
-        <p class="card-text">{{ product.currentPrice }} € <del>{{ product.formerPrice }} €</del></p>  
   	</div>
 </div>
+

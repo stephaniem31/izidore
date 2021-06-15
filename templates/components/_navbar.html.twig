@@ -1,60 +1,61 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-        <img src="{{ asset('/assets/images/izidore.gif') }}" alt="" style="height: 40px;"/>
+        <img src="{{ asset('build/images/izidore.gif') }}" alt="" style="height: 40px;"/>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="col-2">
+    </div>
+    <div class="collapse navbar-collapse col-6" id="navbar">
       <div class="input-group">
-        <div class="form-outline w-50">
-        <input type="search" id="form1" class="form-control" placeholder="Quel produit vous ferait plaisir ?" />
+          <div class="form-outline w-50">
+            <input type="search" id="form1" class="form-control" placeholder="Quel produit vous ferait plaisir ?" />
+          </div>
+            <button type="button" class="btn btn-secondary">
+              <i class="fas fa-search"></i>
+            </button>
+      </div>
     </div>
-    <button type="button" class="btn btn-primary">
-    <i class="fas fa-search"></i>
+    <button type="button" class="btn btn-primary me-1 text-white">
+    VENDRE
     </button>
-        </div>
-    </div>
-    <button type="button" class="btn btn-primary me-1">VENDRE</button>
-    <i class="far fa-heart mx-2"></i>
-    <i class="fas fa-shopping-cart mx-2"></i>
-    <i class="fas fa-user-circle mx-2"></i>
+    <i class="far fa-heart fa-lg mx-2"></i>
+    <i class="fas fa-shopping-cart fa-lg mx-2"></i>
+    <i class="fas fa-user-circle fa-3x mx-2" style="color:#ffd932;"></i>
 </div>
 </nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="top:66px;">
+<nav class="pb-5 navbar navbar-expand-lg navbar-light bg-white text-uppercase font2" style="top:66px;font-size:.75rem;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">NOUVEAUTES</a>
+    <a class="navbar-brand text-danger" style="font-size:.75rem;" href="#">nouveautés</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">VIDE-APPARTS</a>
+          <a class="nav-link" href="#">vide-apparts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">MEUBLES</a>
+          <a class="nav-link" href="#">meubles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ELECTROMENAGER</a>
+          <a class="nav-link" href="#">éléctroménager</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">DECORATION</a>
+          <a class="nav-link" href="#">décoration</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">MARQUES</a>
+          <a class="nav-link" href="#">marques</a>
         </li>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
       <li class="nav-item">
-          <a class="nav-link" href="#">COMMENT CA MARCHE ?</a>
+          <a class="nav-link" href="#">comment ça marche ?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">CONSEILS</a>
+          <a class="nav-link" href="#">conseils</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">BLOG</a>
+          <a class="nav-link" href="#">blog</a>
         </li>
       </ul>
     </div>

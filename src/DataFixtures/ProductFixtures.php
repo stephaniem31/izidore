@@ -20,17 +20,20 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 1; $i <= 9; $i++) {
 
             $product = new Product();
-            $types = [rand(0, count($this->types) - 1)];
+            $index = rand(0, count($this->types) - 1);
+            $currentPrice = rand(10, 1000);
+
 
             $product->setAppartment($this->getReference('appartment_1'));
-            $product->setType($this->types[$types]);
+            $product->setType($this->types[$index]);
             $product->setBrand($this->brands[rand(0, count($this->brands) - 1)]);
-            $product->setCurrentPrice(rand(10, 1000));
-            $product->setFormerPrice(rand(50, 1500));
+            $product->setCurrentPrice($currentPrice);
+            $product->setFormerPrice(rand(($currentPrice + 1), 1500));
             $product->setCurrentCondition('défauts mineurs non-visibles');
             $product->setAge($this->age[rand(0, 2)]);
             $product->setDescription('Vide-appartement témoin : rien n\'est à vendre !');
-            $product->setPicture('\assets\images\type-' . $types . '.jpeg');
+            $product->setPicture('\build\images\type-' . $index . '.jpeg');
+            $product->setIsSold(false);
 
             $manager->persist($product);
         }

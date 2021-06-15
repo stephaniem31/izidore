@@ -3,11 +3,23 @@
 {% block title %}Tous les vide-apparts{% endblock %}
 
 {% block body %}
-    {% for appart in appartments %}
-        <div>
-            <img class="align-self-start mr-3" src="{{appart.picture}}">
-            <p>Chez {{ appart.user.firstname }}</p>
-        </div>
-    {% endfor %} 
+    <div class="row my-5">
+        {% for appart in appartments %}
+            <div class="col-12 col-md-6 col-lg-3">
+                <a href="{{ path("appartment_show", { id: appart.id }) }}">
+                    <div class="card">
+                        <img src="{{ appart.picture}}" class="card-img-top" style="height: 15rem; object-fit : cover">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <h3 class="card-title"font-size: .95rem;">
+                                    Chez {{ appart.user.firstname }}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %} 
+    </div>
 
 {% endblock %}

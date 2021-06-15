@@ -47,4 +47,20 @@ class ReviewRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function countReviews()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('count(r.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function rateAverage()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('avg(r.rate)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

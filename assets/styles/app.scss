@@ -1,0 +1,21 @@
+
+    $primary: #58b58d;
+    $secondary: #ffd932;
+    $dark: #29362e;
+    $light: #6c757d;
+    $warning: rgb(197, 192, 192);
+    $danger:#ff6157;
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .font2 {
+        font-family:'Roboto Slab', serif;
+    }
+
+    
+
+    @import "~bootstrap/scss/bootstrap";
+    
+
