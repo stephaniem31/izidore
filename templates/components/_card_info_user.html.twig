@@ -19,18 +19,22 @@
 						</div>
 					</div>
 				</div>
-				<div style="font-size:.85rem;">
-					{% if nbReviews > 0 %}
-						{% if nbReviews == 1 %}
-							<a href="{{ path("review_show", { id: appart.id }) }}">Voir l'avis</a>
-							<p>({{ rateAverage|number_format(1) }} ⭐)</p>
-						{% else %}
-						<a href="{{ path("review_show", { id: appart.id }) }}">Voir les {{ nbReviews }} avis</a>
+
+				{% if reviews %}
+					<div style="font-size:.85rem;">
+						<a href="#" data-bs-toggle="modal" data-bs-target="#reviews-modal">
+							{% if nbReviews == 1 %}
+								Voir l'avis
+							{% else %}
+								Voir les {{ nbReviews }} avis
+							{% endif %}
+						</a>
+
 						<p>({{ rateAverage|number_format(1) }} ⭐)</p>
-						{% endif %} 
-					
-					{% endif %}
-				</div>
+
+						{% include 'components/_reviews_modal.html.twig' with { reviews: reviews } %}
+					</div>
+				{% endif %}
 			</div>
 			<div>
 				{% if appart.objectDown == true %}

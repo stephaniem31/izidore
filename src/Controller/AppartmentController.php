@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\Appartment;
 use App\Entity\Product;
 use App\Entity\Review;
-use App\Entity\User;
 use App\Form\ReviewType;
+use App\Repository\AppartmentRepository;
+use App\Repository\ProductRepository;
+use App\Repository\ReviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use ContainerHt5EXhX\getDoctrine_UlidGeneratorService;
 
 /**
  * @Route("/vide-appart", name="appartment_")
@@ -22,52 +23,26 @@ class AppartmentController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(): Response
+    public function index(AppartmentRepository $appartmentRepository): Response
     {
-        $appartments = $this->getDoctrine()
-            ->getRepository(Appartment::class)
-            ->findAll();
-
         return $this->render('appartment/index.html.twig', [
-            'appartments' => $appartments,
+            'appartments' => $appartmentRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/{id}/", requirements={"id"="\d+"}, methods={"GET"}, name="show")
+     * @Route("/{id}", requirements={"id"="\d+"}, methods={"GET"}, name="show")
      */
-    public function show(int $id): Response
+    public function show(Appartment $appartment, ReviewRepository $reviewRepository, ProductRepository $productRepository): Response
     {
-        $appartment = $this->getDoctrine()
-            ->getRepository(Appartment::class)
-            ->findOneBy(['id' => $id]);
-
-        $products = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->findAll();
-
-        $reviews = $this->getDoctrine()
-            ->getRepository(Review::class)
-            ->findAll();
-
-        $nbReviews = $this->getDoctrine()
-            ->getRepository(Review::class)
-            ->countReviews();
-
-        $rateAverage = $this->getDoctrine()
-            ->getRepository(Review::class)
-            ->rateAverage();
-
-
         return $this->render('appartment/show.html.twig', [
             'appart' => $appartment,
-            'products' => $products,
-            'reviews' => $reviews,
-            'nbReviews' => $nbReviews,
-            'rateAverage' => $rateAverage,
+            'products' => $productRepository->findAll(),
+            'reviews' => $reviewRepository->findAll(),
+            'nbReviews' => $reviewRepository->countReviews(),
+            'rateAverage' => $reviewRepository->rateAverage(),
         ]);
     }
-
 
     /**
      * @Route("/{appartment}/product/{product}", requirements={"id"="\d+"}, methods={"GET", "POST"}, name="buy")
@@ -85,8 +60,8 @@ class AppartmentController extends AbstractController
         }
 
         $form = $this->createForm(ReviewType::class, $review);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $review->setAppartment($appartment);
@@ -98,6 +73,7 @@ class AppartmentController extends AbstractController
             $entityManager->persist($review);
             $entityManager->persist($product);
             $entityManager->flush();
+
             return $this->redirectToRoute('appartment_show', [
                 'id' => $userId
             ]);

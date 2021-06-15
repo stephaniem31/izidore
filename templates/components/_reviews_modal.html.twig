@@ -1,0 +1,64 @@
+<div class="modal fade" id="reviews-modal" tabindex="-1" aria-labelledby="reviews-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reviews-modal-label">Avis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body p-0">
+        <ul class="list-group list-group-flush">
+            {% for review in reviews %}
+                <li class="list-group-item">
+                    <div class="d-flex">
+                        <div class="text-center">
+                            <p class="m-0 text-primary fw-bold fs-3">{{ review.rate }}/5</p>
+
+                            <div>
+                                {% for i in 1..5 %}
+                                    {% if loop.index < review.rate %}
+                                        <i class="fas fa-star text-primary"></i>
+                                    {% else %}
+                                        <i class="far fa-star text-muted"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <div class="mt-2">
+                                <small class="text-muted">
+                                    Publié le
+                                </small>
+
+                                <small class="text-muted fw-bold">
+                                    {{ review.date|date('d/m/Y') }}
+                                </small>
+                            </div>
+
+                            <div>
+                                <small class="text-muted">
+                                    Par
+                                </small>
+
+                                <small class="text-muted fw-bold">
+                                    {{ review.name }}
+                                </small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="fs-4 ms-5">{{ review.description }}</p>
+                        </div>
+                    </div>  
+                </li>
+            {% endfor %}
+        </ul>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
