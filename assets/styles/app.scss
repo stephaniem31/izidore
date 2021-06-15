@@ -6,6 +6,8 @@
     $warning: rgb(197, 192, 192);
     $danger:#ff6157;
 
+    $enable-negative-margins: true;
+
     body {
         font-family: 'Poppins', sans-serif;
     }
@@ -30,6 +32,10 @@
         height: 50vh; 
         background-position:bottom; 
         background-repeat:no-repeat; 
+    }
+
+    .home-presentation {
+        background: #d6e3d8;
     }
 
     .footer-bottom {

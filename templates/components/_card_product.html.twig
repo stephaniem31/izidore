@@ -7,7 +7,7 @@
 
   	<div class="card-body">
 	  	<div class="row">
-			<div class="col-12 col-lg-8">
+			<div class="col-6">
 				<span class="card-text text-dark fs-4 fw-bold">
 					{{ product.currentPrice }} €
 				</span>
@@ -21,14 +21,14 @@
 				</p>
 			</div>
 
-			<div class="col-12 col-lg-4 text-end">
+			<div class="col-6 text-end">
 				{% if product.isSold == false %}
 					<a class="btn btn-secondary fw-bold text-uppercase" href="{{ path("appartment_buy",{ appartment: appart.id, product: product.id }) }}">
 						acheter
 					</a>
 				{% else %}
 					<button type="button" class="btn btn-danger fw-bold text-uppercase" disabled>
-					vendu
+						vendu
 					</button>
 				{% endif %}
 			</div>
