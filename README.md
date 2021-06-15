@@ -18,11 +18,11 @@
    - Lancer `yarn install` ou `npm install`
    - Lancer `npm run dev`
    - Copier le fichier .env et le renommer en .env.local -> changer db_user, db_password et db_name
-   - Lancer `symfony php/bin doctrine:database:create`
-   - Lancer `symfony php/bin m:mig`
-   - Lancer `symfony php/bin d:m:m`
-   - Lancer `symfony php/bin d:f:l`
-   - Lancer `symfony server:start`
+   - Lancer `php bin/console doctrine:database:create`
+   - Lancer `php bin/console m:mig`
+   - Lancer `php bin/console d:m:m`
+   - Lancer `php bin/console d:f:l`
+   - Lancer `php bin/console server:start`
    - Dans le navigateur, taper l'adresse : https://localhost:8000/
   
  
