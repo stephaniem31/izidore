@@ -16,6 +16,7 @@
  
    - Lancer `composer install`
    - Lancer `yarn install` ou `npm install`
+   - Lancer `npm run dev`
    - Copier le fichier .env et le renommer en .env.local -> changer db_user, db_password et db_name
    - Lancer `symfony php/bin doctrine:database:create`
    - Lancer `symfony php/bin m:mig`
